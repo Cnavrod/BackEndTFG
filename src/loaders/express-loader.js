@@ -9,7 +9,12 @@ import { swaggerDoc } from '../openapi/index.js';
 
 export default function(server){   
     /* Config */
-    server.use(cors());
+    server.use(cors({
+        origin: 'https://carlosnavarrotfg.vercel.app',
+        methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+        allowedHeaders: ['Authorization', 'Content-Type'],
+        credentials: true
+    }));
     server.use(express.json());
     server.use(express.urlencoded({ extended: true}));
     /* Static files */

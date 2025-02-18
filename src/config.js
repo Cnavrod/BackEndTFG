@@ -12,4 +12,8 @@ export const jph = {
     url: process.env.JPH_URL,
 }
 
+export const mongoDBConfig = {
+    PASS: process.env.MONGODB_PASS,
+}
+
 export default config;
