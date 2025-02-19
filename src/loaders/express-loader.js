@@ -1,8 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
-
-import router from '../routes/index.js';
+import songRouter from '../routes/song-routes.js';
 import errorMiddleware from '../middlewares/error-middleware.js';
 import morganMiddleware from '../config/morgan.js';
 import swaggerDoc from '../openapi/index.js';
@@ -25,7 +24,7 @@ export default function (server) {
   /* MDW */
   server.use(morganMiddleware);
   /* Routes */
-  server.use(router);
+  server.use('/api', songRouter); // Asegúrate de que las rutas están bajo el prefijo /api
   /* Error handler */
   server.use(errorMiddleware);
 }

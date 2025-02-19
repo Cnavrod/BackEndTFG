@@ -3,7 +3,7 @@ import { mongoDBConfig } from '../config.js';
 
 export default async function connectMongo() {
   try {
-    await mongoose.connect(`mongodb+srv://Carlos:${mongoDBConfig.PASS}@tfg.a12jv.mongodb.net/?retryWrites=true&w=majority&appName=TFG`, {
+    await mongoose.connect(`mongodb+srv://Carlos:${mongoDBConfig.PASS}@tfg.a12jv.mongodb.net/Songs?retryWrites=true&w=majority&appName=TFG`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
