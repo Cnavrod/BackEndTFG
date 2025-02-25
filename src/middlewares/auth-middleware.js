@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import config from '../config.js';
 
 export default function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -9,9 +8,7 @@ export default function authMiddleware(req, res, next) {
 
   const token = authHeader.split(" ")[1];
   try {
-    // Verifica el token usando la clave secreta definida en .env o en tu configuración
-    const decoded = jwt.verify(token, process.env.SECRET_KEY || config.app.secretKey);
-    // Añade la información decodificada a la request para usarla en rutas protegidas.
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
     next();
   } catch (error) {
