@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-import config from '../config.js';
+// import config from '../config.js';
 
 export const register = async (req, res) => {
   try {
