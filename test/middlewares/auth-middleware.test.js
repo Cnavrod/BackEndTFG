@@ -5,15 +5,15 @@ jest.mock('jsonwebtoken');
 
 describe('Auth Middleware', () => {
   it('should call next if token is valid', () => {
-    const req = { headers: { authorization: 'Bearer token' } };
+    const req = { headers: { authorization: 'Bearer validtoken' } };
     const res = {};
     const next = jest.fn();
     jwt.verify.mockReturnValue({ id: '123' });
 
     authMiddleware(req, res, next);
 
-    expect(req.user).toEqual({ id: '123' });
     expect(next).toHaveBeenCalled();
+    expect(req.user).toEqual({ id: '123' });
   });
 
   it('should return 401 if no token is provided', () => {
@@ -28,7 +28,7 @@ describe('Auth Middleware', () => {
   });
 
   it('should return 401 if token is invalid', () => {
-    const req = { headers: { authorization: 'Bearer token' } };
+    const req = { headers: { authorization: 'Bearer invalidtoken' } };
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
     const next = jest.fn();
     jwt.verify.mockImplementation(() => { throw new Error('Invalid token'); });

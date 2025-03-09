@@ -11,12 +11,12 @@ import {
 
 const router = express.Router();
 
-router.get('/songs', getAllSongs);
-router.get('/songs/title/:title', getSongByTitle);
-router.get('/songs/genre/:genre', getSongsByGenre);
-router.get('/songs/artist/:artist', getSongsByArtist);
-router.get('/songs/year/:year', getSongsByYear);
-router.post('/songs', createSong);
-router.delete('/songs/title/:title', deleteSongByTitle);
+router.get('/', getAllSongs);
+router.get('/title/:title', getSongByTitle);
+router.get('/genre/:genre', getSongsByGenre);
+router.get('/artist/:artist', getSongsByArtist);
+router.get('/year/:year', getSongsByYear);
+router.post('/', createSong);
+router.delete('/title/:title', deleteSongByTitle);
 
 export default router;

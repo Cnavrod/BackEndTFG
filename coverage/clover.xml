@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741107224146" clover="3.2.0">
-  <project timestamp="1741107224146" name="All files">
-    <metrics statements="146" coveredstatements="29" conditionals="29" coveredconditionals="7" methods="24" coveredmethods="4" elements="199" coveredelements="40" complexity="0" loc="146" ncloc="146" packages="9" files="25" classes="25"/>
+<coverage generated="1741107736827" clover="3.2.0">
+  <project timestamp="1741107736829" name="All files">
+    <metrics statements="146" coveredstatements="49" conditionals="29" coveredconditionals="9" methods="24" coveredmethods="6" elements="199" coveredelements="64" complexity="0" loc="146" ncloc="146" packages="9" files="25" classes="25"/>
     <package name="src">
       <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="app.js" path="D:\Cosas instituto\1 Grado Superior DAW\SegundoAño\EC\T2\TFG\BackEndTFG\src\app.js">
@@ -38,7 +38,7 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="60" coveredstatements="16" conditionals="8" coveredconditionals="3" methods="10" coveredmethods="3"/>
+      <metrics statements="60" coveredstatements="34" conditionals="8" coveredconditionals="5" methods="10" coveredmethods="5"/>
       <file name="login-controller.js" path="D:\Cosas instituto\1 Grado Superior DAW\SegundoAño\EC\T2\TFG\BackEndTFG\src\controllers\login-controller.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
@@ -46,42 +46,42 @@
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
       <file name="song-controller.js" path="D:\Cosas instituto\1 Grado Superior DAW\SegundoAño\EC\T2\TFG\BackEndTFG\src\controllers\song-controller.js">
-        <metrics statements="40" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <metrics statements="40" coveredstatements="18" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
         <line num="71" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -162,7 +162,7 @@
       </file>
     </package>
     <package name="src.models">
-      <metrics statements="23" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="connectionDB.js" path="D:\Cosas instituto\1 Grado Superior DAW\SegundoAño\EC\T2\TFG\BackEndTFG\src\models\connectionDB.js">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
@@ -180,9 +180,9 @@
         <line num="13" count="0" type="stmt"/>
       </file>
       <file name="songs.js" path="D:\Cosas instituto\1 Grado Superior DAW\SegundoAño\EC\T2\TFG\BackEndTFG\src\models\songs.js">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
       <file name="user.js" path="D:\Cosas instituto\1 Grado Superior DAW\SegundoAño\EC\T2\TFG\BackEndTFG\src\models\user.js">
         <metrics statements="11" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
