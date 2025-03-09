@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-import { sendEmail } from '../../services/emailService.js';
+import { sendEmail } from '../../services/emailService.js'; // Asegúrate de que la ruta sea correcta
 
 export const register = async (req, res) => {
   try {

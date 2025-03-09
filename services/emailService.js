@@ -1,12 +1,18 @@
-import formData from 'form-data';
-import Mailgun from 'mailgun.js';
+import nodemailer from 'nodemailer';
 
-const mailgun = new Mailgun(formData);
-const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY });
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // true para 465, false para otros puertos
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 export const sendEmail = async (to, subject, text, html) => {
-  const data = {
-    from: 'Excited User <mailgun@YOUR_DOMAIN_NAME>',
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
     to,
     subject,
     text,
@@ -14,8 +20,8 @@ export const sendEmail = async (to, subject, text, html) => {
   };
 
   try {
-    const response = await mg.messages.create(process.env.MAILGUN_DOMAIN, data);
-    console.log('Email sent:', response);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.response);
   } catch (error) {
     console.error('Error sending email:', error);
     throw error;
