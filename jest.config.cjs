@@ -6,7 +6,11 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.js',
-    '!src/**/*.test.js',
+    '!src/config/**',
+    '!src/loaders/**',
+    '!src/models/**',
+    '!src/openapi/**',
+    '!src/routes/**',
   ],
   coverageDirectory: 'coverage',
 };

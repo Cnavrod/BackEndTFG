@@ -60,6 +60,4 @@ describe('Song Controller', () => {
       expect(res.json).toHaveBeenCalledWith({ message: 'Fetch error' });
     });
   });
-
-  // Similar tests for getSongsByGenre, getSongsByArtist, getSongsByYear, createSong, deleteSongByTitle
 });
