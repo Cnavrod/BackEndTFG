@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "username": "Carlos1995",
+  "email": "carlitosnr2005@gmail.com",
+  "password": "ContraseñaUltraSegura",
+  "role": "oyente"
+}

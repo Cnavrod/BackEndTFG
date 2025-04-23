@@ -1,10 +1,17 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-import { sendEmail } from '../../services/emailService.js'; // Asegúrate de que la ruta sea correcta
+import { sendEmail } from '../../services/emailService.js';
 
 export const register = async (req, res) => {
   try {
-    const user = new User(req.body);
+    const { username, password, role } = req.body;
+
+    // Verificar que el rol es válido
+    if (!['oyente', 'cantante'].includes(role)) {
+      return res.status(400).json({ message: 'Invalid role' });
+    }
+
+    const user = new User({ username, password, role });
     const newUser = await user.save();
 
     // Enviar correo electrónico de bienvenida

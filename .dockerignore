@@ -1,0 +1,30 @@
+# Ignorar la carpeta node_modules
+node_modules
+
+# Ignorar el archivo package-lock.json
+package-lock.json
+
+# Ignorar archivos de configuración de entorno
+.env
+
+# Ignorar archivos de cobertura de pruebas
+coverage
+
+# Ignorar archivos de configuración de Docker
+Dockerfile
+docker-compose.yml
+
+# Ignorar archivos de configuración de Git
+.git
+.gitignore
+
+# Ignorar archivos de configuración de editor
+.vscode
+.idea
+
+# Ignorar archivos de logs
+logs
+*.log
+
+# Ignorar archivos de pruebas
+test
