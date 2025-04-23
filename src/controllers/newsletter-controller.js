@@ -21,7 +21,7 @@ export const subscribeToNewsletter = async (req, res) => {
     const songList = recommendedSongs.map((song) => `- ${song.title} by ${song.artist}`).join('\n');
 
     // Enviar correo de agradecimiento
-    const subject = 'Thank you for subscribing to our newsletter!';
+    const subject = 'Gracias por suscribirte a las noticias!';
     const text = `Hi there!\n\nThank you for subscribing to our newsletter. Here are some song recommendations for you:\n\n${songList}\n\nEnjoy!`;
     const html = `
       <h1>Thank you for subscribing to our newsletter!</h1>
