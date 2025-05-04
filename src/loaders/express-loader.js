@@ -10,7 +10,7 @@ import swaggerDoc from '../openapi/index.js';
 export default function (server) {
   /* Config */
   server.use(cors({
-    origin: 'https://carlosnavarrotfg.vercel.app',
+    origin: 'http://localhost:3001', // Cambia esto si el frontend está en otro dominio
     methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
     allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: true,
