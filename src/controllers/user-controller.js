@@ -35,13 +35,13 @@ export const login = async (req, res) => {
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    // Sign the JWT with the secret key from .env
+    // Generar el token JWT
     const token = jwt.sign(
       { id: user._id, username: user.username },
       process.env.SECRET_KEY,
       { expiresIn: '1h' }
     );
-    res.json({ token });
+    res.json({ token, user: { id: user._id, username: user.username, role: user.role } });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -51,6 +51,64 @@ export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({}, '-password');
     res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Crear una nueva playlist
+export const createPlaylist = async (req, res) => {
+  try {
+    const { name, isPublic } = req.body;
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const newPlaylist = { name, songs: [], isPublic };
+    user.playlists.push(newPlaylist);
+    await user.save();
+
+    res.status(201).json({ message: 'Playlist created', playlist: newPlaylist });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Añadir una canción a una playlist
+export const addSongToPlaylist = async (req, res) => {
+  try {
+    const { playlistId, songId } = req.body;
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const playlist = user.playlists.id(playlistId);
+    if (!playlist) return res.status(404).json({ message: 'Playlist not found' });
+
+    playlist.songs.push(songId);
+    await user.save();
+
+    res.status(200).json({ message: 'Song added to playlist', playlist });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Obtener playlists públicas
+export const getPublicPlaylists = async (req, res) => {
+  try {
+    const users = await User.find({ 'playlists.isPublic': true }, 'playlists');
+    const publicPlaylists = users.flatMap(user => user.playlists.filter(playlist => playlist.isPublic));
+    res.json(publicPlaylists);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Obtener playlists de un usuario
+export const getUserPlaylists = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id, 'playlists');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user.playlists);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
