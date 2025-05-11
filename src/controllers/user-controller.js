@@ -106,7 +106,7 @@ export const getPublicPlaylists = async (req, res) => {
 // Obtener playlists de un usuario
 export const getUserPlaylists = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id, 'playlists');
+    const user = await User.findById(req.user.id).populate('playlists.songs');
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user.playlists);
   } catch (error) {

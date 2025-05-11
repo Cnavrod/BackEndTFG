@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 const playlistSchema = new mongoose.Schema({
   name: { type: String, required: true },
   songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'songscollections' }], // Referencia a canciones
-  isPublic: { type: Boolean, default: false }, // Pública o privada
+  isPublic: { type: Boolean, default: false },
 });
 
 const userSchema = new mongoose.Schema({
