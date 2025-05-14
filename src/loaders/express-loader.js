@@ -6,6 +6,7 @@ import songRouter from '../routes/song-routes.js';
 import errorMiddleware from '../middlewares/error-middleware.js';
 import morganMiddleware from '../config/morgan.js';
 import swaggerDoc from '../openapi/index.js';
+import playlistRouter from '../routes/playlist-routes.js';
 
 export default function (server) {
   /* Config */
@@ -27,6 +28,7 @@ export default function (server) {
   /* Routes */
   server.use('/api/users', userRouter); // Asegúrate de que las rutas están bajo el prefijo /api
   server.use('/api/songs', songRouter); // Asegúrate de que las rutas están bajo el prefijo /api
+  server.use('/api/playlists', playlistRouter);
   /* Error handler */
   server.use(errorMiddleware);
 }
