@@ -4,14 +4,20 @@ import { sendEmail } from '../../services/emailService.js';
 
 export const register = async (req, res) => {
   try {
-    const { username, password, role } = req.body;
+    const { username, email, password, role } = req.body;
 
     // Verificar que el rol es válido
     if (!['oyente', 'cantante'].includes(role)) {
       return res.status(400).json({ message: 'Invalid role' });
     }
 
-    const user = new User({ username, password, role });
+    // Verificar que el email no esté en uso
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+      return res.status(400).json({ message: 'El correo ya está en uso' });
+    }
+
+    const user = new User({ username, email, password, role }); // <-- Incluye email
     const newUser = await user.save();
 
     // Enviar correo electrónico de bienvenida
