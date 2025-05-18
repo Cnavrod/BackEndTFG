@@ -1,4 +1,5 @@
 import express from 'express';
+import authMiddleware from '../middlewares/auth-middleware.js';
 import {
   getAllSongs,
   getSongByTitle,
@@ -16,7 +17,7 @@ router.get('/title/:title', getSongByTitle);
 router.get('/genre/:genre', getSongsByGenre);
 router.get('/artist/:artist', getSongsByArtist);
 router.get('/year/:year', getSongsByYear);
-router.post('/', createSong);
 router.delete('/title/:title', deleteSongByTitle);
+router.post('/', authMiddleware, createSong);
 
 export default router;

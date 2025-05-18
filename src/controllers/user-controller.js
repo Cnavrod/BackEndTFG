@@ -43,10 +43,10 @@ export const login = async (req, res) => {
     }
     // Generar el token JWT
     const token = jwt.sign(
-      { id: user._id, username: user.username },
-      process.env.SECRET_KEY,
-      { expiresIn: '1h' }
-    );
+  { id: user._id, username: user.username, role: user.role },
+  process.env.SECRET_KEY,
+  { expiresIn: '1h' }
+);
     res.json({ token, user: { id: user._id, username: user.username, role: user.role } });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -115,6 +115,16 @@ export const getUserPlaylists = async (req, res) => {
     const user = await User.findById(req.user.id).populate('playlists.songs');
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user.playlists);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Obtener todos los usuarios cantantes
+export const getAllSingers = async (req, res) => {
+  try {
+    const singers = await User.find({ role: 'cantante' }, 'username _id');
+    res.json(singers);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
