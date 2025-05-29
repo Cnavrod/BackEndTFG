@@ -10,9 +10,7 @@ import playlistRouter from '../routes/playlist-routes.js';
 import newsletterTemplateRouter from '../routes/newsletter-routes.js';
 
 export default function (server) {
-  /* Config */
-  const cors = require('cors');
-app.use(cors({
+server.use(cors({
   origin: ['http://localhost:3000', 'https://front-end-tfg.vercel.app/'], // añade aquí tus orígenes permitidos
   credentials: true
 }));
