@@ -1,0 +1,210 @@
+openapi: 3.0.0
+info:
+  title: API Backend TFG
+  version: 1.0.0
+  description: API para gestión de usuarios, canciones, playlists y newsletter.
+
+servers:
+  - url: http://localhost:3000/api
+
+tags:
+  - name: Users
+  - name: Songs
+  - name: Playlists
+  - name: Newsletter
+
+paths:
+  /users/register:
+    post:
+      tags: [Users]
+      summary: Registrar un nuevo usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+      responses:
+        '201':
+          description: Usuario registrado
+        '400':
+          description: Error de validación
+
+  /users/login:
+    post:
+      tags: [Users]
+      summary: Login de usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Login correcto
+        '401':
+          description: Credenciales inválidas
+
+  /users:
+    get:
+      tags: [Users]
+      summary: Obtener todos los usuarios
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de usuarios
+
+  /songs:
+    get:
+      tags: [Songs]
+      summary: Obtener todas las canciones
+      responses:
+        '200':
+          description: Lista de canciones
+    post:
+      tags: [Songs]
+      summary: Crear una canción
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Song'
+      responses:
+        '201':
+          description: Canción creada
+
+  /songs/title/{title}:
+    get:
+      tags: [Songs]
+      summary: Obtener canción por título
+      parameters:
+        - in: path
+          name: title
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Canción encontrada
+        '404':
+          description: No encontrada
+
+  /songs/genre/{genre}:
+    get:
+      tags: [Songs]
+      summary: Obtener canciones por género
+      parameters:
+        - in: path
+          name: genre
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Lista de canciones
+
+  /songs/artist/{artist}:
+    get:
+      tags: [Songs]
+      summary: Obtener canciones por artista
+      parameters:
+        - in: path
+          name: artist
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Lista de canciones
+
+  /songs/year/{year}:
+    get:
+      tags: [Songs]
+      summary: Obtener canciones por año
+      parameters:
+        - in: path
+          name: year
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Lista de canciones
+
+  /newsletter/subscribe:
+    post:
+      tags: [Newsletter]
+      summary: Suscribirse a la newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '201':
+          description: Suscripción exitosa
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    UserRegister:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+          enum: [oyente, cantante]
+    UserLogin:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Song:
+      type: object
+      properties:
+        cover:
+          type: string
+        title:
+          type: string
+        artist:
+          type: string
+        genre:
+          type: string
+        duration:
+          type: string
+        year:
+          type: integer
+        type:
+          type: string
+        popularity:
+          type: integer
+        plays:
+          type: integer
+        ratings:
+          type: integer
+        date:
+          type: string
+          format: date
+        listen:
+          type: string

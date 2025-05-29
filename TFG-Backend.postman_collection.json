@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "TFG Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"testuser@mail.com\",\n  \"password\": \"testpass\",\n  \"role\": \"oyente\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/users/register", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", "register"] }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/users/login", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", "login"] }
+      }
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "http://localhost:3000/api/users", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users"] }
+      }
+    },
+    {
+      "name": "Create Song",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cover\": \"/cover.jpg\",\n  \"title\": \"Test Song\",\n  \"artist\": \"Test Artist\",\n  \"genre\": \"Pop\",\n  \"duration\": \"3:30\",\n  \"year\": 2024,\n  \"type\": \"Single\",\n  \"popularity\": 0,\n  \"plays\": 0,\n  \"ratings\": 0,\n  \"date\": \"2024-01-01\",\n  \"listen\": \"http://example.com\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/songs", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "songs"] }
+      }
+    },
+    {
+      "name": "Get All Songs",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/songs", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "songs"] }
+      }
+    },
+    {
+      "name": "Get Song by Title",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/songs/title/Test%20Song", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "songs", "title", "Test Song"] }
+      }
+    },
+    {
+      "name": "Get Songs by Genre",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/songs/genre/Pop", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "songs", "genre", "Pop"] }
+      }
+    },
+    {
+      "name": "Get Songs by Artist",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/songs/artist/Test%20Artist", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "songs", "artist", "Test Artist"] }
+      }
+    },
+    {
+      "name": "Get Songs by Year",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/songs/year/2024", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "songs", "year", "2024"] }
+      }
+    },
+    {
+      "name": "Subscribe to Newsletter",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"testuser@mail.com\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/newsletter/subscribe", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "newsletter", "subscribe"] }
+      }
+    }
+  ]
+}
