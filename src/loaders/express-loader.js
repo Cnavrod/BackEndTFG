@@ -11,12 +11,11 @@ import newsletterTemplateRouter from '../routes/newsletter-routes.js';
 
 export default function (server) {
   /* Config */
-  server.use(cors({
-    origin: 'http://localhost:3001', // Cambia esto si el frontend está en otro dominio
-    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-    allowedHeaders: ['Authorization', 'Content-Type'],
-    credentials: true,
-  }));
+  const cors = require('cors');
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://front-end-tfg.vercel.app/'], // añade aquí tus orígenes permitidos
+  credentials: true
+}));
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
   /* Static files */
