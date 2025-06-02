@@ -11,7 +11,7 @@ import newsletterTemplateRouter from '../routes/newsletter-routes.js';
 
 export default function (server) {
   server.use(cors({
-    origin: ['http://localhost:3000', 'https://front-end-tfg.vercel.app'],
+    origin: ['http://localhost:3000', 'https://front-end-tfg.vercel.app', 'https://tfgcarlosnavarro.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
