@@ -61,3 +61,42 @@ describe('Song Controller', () => {
     });
   });
 });
+
+describe('getSongsByGenre', () => {
+  it('should return songs by genre', async () => {
+    const req = { params: { genre: 'Pop' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    SongsCollection.find.mockResolvedValue([{ title: 'Song1', genre: 'Pop' }]);
+    await getSongsByGenre(req, res);
+    expect(res.json).toHaveBeenCalledWith([{ title: 'Song1', genre: 'Pop' }]);
+  });
+
+  it('should handle errors', async () => {
+    const req = { params: { genre: 'Pop' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    SongsCollection.find.mockRejectedValue(new Error('Genre error'));
+    await getSongsByGenre(req, res);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Genre error' });
+  });
+});
+
+describe('getSongsByArtist', () => {
+  it('should return songs by artist', async () => {
+    const req = { params: { artist: 'Artist1' } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    SongsCollection.find.mockResolvedValue([{ title: 'Song1', artist: 'Artist1' }]);
+    await getSongsByArtist(req, res);
+    expect(res.json).toHaveBeenCalledWith([{ title: 'Song1', artist: 'Artist1' }]);
+  });
+});
+
+describe('getSongsByYear', () => {
+  it('should return songs by year', async () => {
+    const req = { params: { year: 2021 } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    SongsCollection.find.mockResolvedValue([{ title: 'Song1', year: 2021 }]);
+    await getSongsByYear(req, res);
+    expect(res.json).toHaveBeenCalledWith([{ title: 'Song1', year: 2021 }]);
+  });
+});

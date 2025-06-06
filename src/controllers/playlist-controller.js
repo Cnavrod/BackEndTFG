@@ -64,3 +64,41 @@ export const deletePlaylist = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const addCommentToPlaylist = async (req, res) => {
+  try {
+    const { playlistId } = req.params;
+    const { text } = req.body;
+    const userId = req.user.id;
+    const username = req.user.username;
+
+    const playlist = await Playlist.findById(playlistId);
+    if (!playlist || !playlist.isPublic) {
+      return res.status(404).json({ message: 'Playlist pública no encontrada' });
+    }
+
+    playlist.comments.push({
+      user: userId,
+      username,
+      text
+    });
+    await playlist.save();
+    res.status(201).json(playlist.comments);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Obtener comentarios de una playlist pública
+export const getPlaylistComments = async (req, res) => {
+  try {
+    const { playlistId } = req.params;
+    const playlist = await Playlist.findById(playlistId).populate('comments.user', 'username');
+    if (!playlist || !playlist.isPublic) {
+      return res.status(404).json({ message: 'Playlist pública no encontrada' });
+    }
+    res.json(playlist.comments);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

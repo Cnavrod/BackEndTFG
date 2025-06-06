@@ -54,3 +54,21 @@ describe('User Routes', () => {
     });
   });
 });
+
+  describe('GET /api/users', () => {
+    it('should return 401 if no token is provided', async () => {
+      const res = await request(app)
+        .get('/api/users');
+      expect(res.status).toBe(401);
+      expect(res.body).toEqual({ message: 'No token provided' });
+    });
+
+    it('should return 401 if token is invalid', async () => {
+      jwt.verify.mockImplementation(() => { throw new Error('Invalid token'); });
+      const res = await request(app)
+        .get('/api/users')
+        .set('Authorization', 'Bearer invalidtoken');
+      expect(res.status).toBe(401);
+      expect(res.body).toEqual({ message: 'Invalid token' });
+    });
+  });

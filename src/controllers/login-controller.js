@@ -15,7 +15,7 @@ export const forgotPassword = async (req, res) => {
     await user.save();
 
     // Enlace de recuperación
-    const resetUrl = `http://localhost:3001/reset-password/${token}`;
+    const resetUrl = `https://tfgcarlosnavarro.vercel.app/reset-password/${token}`;
     const subject = 'Recuperación de contraseña';
     const text = `Haz clic en el siguiente enlace para restablecer tu contraseña: ${resetUrl}`;
     const html = `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p><a href="${resetUrl}">${resetUrl}</a>`;
